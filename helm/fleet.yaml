@@ -1,0 +1,9 @@
+namespace: fleet-ac-apisix
+helm:
+  releaseName: application-collection-apache-apisix
+  repo: oci://dp.apps.rancher.io/charts/apache-apisix
+  valuesFrom:
+    - secretKeyRef:
+      name: application-collection
+      namespace: fleet-ac-apisix
+  
