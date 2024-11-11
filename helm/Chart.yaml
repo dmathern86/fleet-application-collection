@@ -1,0 +1,31 @@
+annotations:
+  helm.sh/images: |
+    - image: dp.apps.rancher.io/containers/apache-apisix:3.2.2
+      name: apache-apisix
+    - image: dp.apps.rancher.io/containers/bci-busybox:15.5
+      name: bci-busybox
+apiVersion: v2
+appVersion: 3.2.2
+dependencies:
+- condition: etcd.enabled
+  name: etcd
+  repository: oci://dp.apps.rancher.io/charts
+  version: 0.x.x
+- alias: dashboard
+  condition: dashboard.enabled
+  name: apache-apisix-dashboard
+  repository: oci://dp.apps.rancher.io/charts
+  version: 0.x.x
+- alias: ingress-controller
+  condition: ingress-controller.enabled
+  name: apache-apisix-ingress-controller
+  repository: oci://dp.apps.rancher.io/charts
+  version: 0.x.x
+description: A Helm chart for Apache APISIX v3
+home: https://apps.rancher.io/applications/apache-apisix
+icon: https://apache.org/logos/res/apisix/apisix.png
+maintainers:
+- name: SUSE LLC
+  url: https://www.suse.com/
+name: apache-apisix
+version: 2.8.1
