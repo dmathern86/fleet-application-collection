@@ -1,5 +1,14 @@
-defaultNamespace: apache-apisix
+defaultNamespace: redis
 helm:
-  releaseName: ac-apache-apisix
-  chart: oci://dp.apps.rancher.io/charts/apache-apisix
-  version: 2.8.1
+  releaseName: redis
+  chart: oci://dp.apps.rancher.io/charts/redis
+  version: 0.3.0
+
+diff:
+  comparePatches:
+  - apiVersion: apps/v1
+    kind: StatefulSet
+    name: redis
+    namespace: redis
+    operations:
+    - {"op": "remove", "path":"/spec"}
